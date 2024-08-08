@@ -1,0 +1,128 @@
+/*
+
+This CSS file will be included with your plugin, and
+available in the app when your plugin is enabled.
+
+If your plugin does not need CSS, delete this file.
+
+*/
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow-y: auto;
+  }
+  
+  .card {
+    width: 150px; /* 卡片宽度 */
+    background-color: var(--background-primary); /* 淡灰色背景 */
+    border: 2px solid var(--border-color); /* 边框颜色 */
+    border-radius: 20px; /* 较大的圆角边框 */
+    padding: 20px; /* 内边距 */
+    margin: 15px; /* 外边距 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 淡灰色阴影 */
+    text-decoration: none; /* 移除下划线 */
+    color: var(--text-normal); /* 文字颜色 */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* 更可爱的字体 */
+    font-size: 14px; /* 小一点的字体大小 */
+    line-height: 1.5; /* 增加行高 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 点击效果过渡和阴影变化 */
+  }
+  
+  .card:hover {
+    transform: scale(1.03); /* 悬停时放大效果，略微减小放大比例 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* 加大阴影效果 */
+  }
+  
+  /* 为卡片添加脉动效果 */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.01);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .card:hover {
+    animation: pulse 1s infinite; /* 在悬停时激活脉动效果 */
+  }
+
+  .plus {
+    width: 100%;
+    height: 50;
+    background-color: var(--background-secondary); /* 背景颜色 */
+    border: var(--border-width) solid var(--border-color); /* 边框 */
+    border-radius: 10px; /* 圆角边框 */
+    padding: 20px; /* 内边距 */
+    margin: 15px; /* 外边距 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* 阴影效果 */
+    text-decoration: none; /* 移除下划线 */
+    color: var(--text-normal); /* 文字颜色 */
+    font-family: var(--font-text);
+    transition: transform 0.3s ease; /* 点击效果过渡 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: x-large;
+    text-align: center;
+  }
+
+  .plus:hover {
+    transform: scale(1.03); /* 悬停时放大效果，略微减小放大比例 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* 加大阴影效果 */
+    animation: pulse 1s infinite;
+  }
+
+  .card .title {
+    font-size: var(--inline-title-size); /* 24px 标题字体大小 */
+    font-family: var(--inline-title-font);
+    font-weight: bold;
+    margin-bottom: 10px; /* 标题下边距 */
+  }
+  .card .date {
+    font-size: 14px; /* 日期字体大小 */
+    color: #666666; /* 日期颜色 */
+    margin-bottom: 10px; /* 日期下边距 */
+  }
+  .card .snippet {
+    font-size: 16px; /* 摘要字体大小 */
+    color: #555555; /* 摘要颜色 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .refresh-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .refresh-button {
+    position: fixed; /* 使用固定定位 */
+    top: 20px; /* 距离顶部20px */
+    right: 20px; /* 距离右边20px */
+    background-color: var(--background-primary); /* Green */
+    border: none;
+    color: var(--text-normal);
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+
+  .refresh-button:hover {
+    background-color: #45a049;
+  }
+
+  .icon::before {
+    content: '\21bb'; /* Unicode character for a refresh arrow */
+    font-size: 1.2em;
+    margin-right: 0px;
+  }

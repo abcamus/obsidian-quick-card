@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiple Document Cards</title>
+<style>
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .card {
+    width: 300px; /* 卡片宽度 */
+    background-color: #ffffff; /* 背景颜色 */
+    border: 1px solid #ddd; /* 边框 */
+    border-radius: 10px; /* 圆角边框 */
+    padding: 20px; /* 内边距 */
+    margin: 15px; /* 外边距 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 阴影效果 */
+    text-decoration: none; /* 移除下划线 */
+    color: #333; /* 文字颜色 */
+    font-family: 'Arial', sans-serif; /* 字体 */
+    transition: transform 0.3s ease; /* 点击效果过渡 */
+  }
+  .card:hover {
+    transform: translateY(-5px); /* 鼠标悬停时卡片轻微上移 */
+  }
+  .card .title {
+    font-size: 24px; /* 标题字体大小 */
+    margin-bottom: 10px; /* 标题下边距 */
+  }
+  .card .date {
+    font-size: 14px; /* 日期字体大小 */
+    color: #666666; /* 日期颜色 */
+    margin-bottom: 10px; /* 日期下边距 */
+  }
+  .card .snippet {
+    font-size: 16px; /* 摘要字体大小 */
+    color: #555555; /* 摘要颜色 */
+  }
+</style>
+</head>
+<body>
+
+<div class="card-container">
+  <!-- 重复以下卡片结构10次，每次更新卡片内容 -->
+  <a href="path/to/your-document1.pdf" class="card" target="_blank">
+    <div class="title">文档标题 1</div>
+    <div class="date">2023-12-01</div>
+    <div class="snippet">文档摘要 1...</div>
+  </a>
+  <!-- ... -->
+  <a href="path/to/your-document2.pdf" class="card" target="_blank">
+    <div class="title">文档标题 2</div>
+    <div class="date">2023-12-02</div>
+    <div class="snippet">文档摘要 2...</div>
+  </a>
+  <!-- ... -->
+  <!-- 继续添加卡片，直到有10张 -->
+  <a href="path/to/your-document10.pdf" class="card" target="_blank">
+    <div class="title">文档标题 10</div>
+    <div class="date">2023-12-10</div>
+    <div class="snippet">文档摘要 10...</div>
+  </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refresh Button</title>
+<style>
+  .refresh-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .refresh-button {
+    position: fixed; /* 使用固定定位 */
+    top: 20px; /* 距离顶部20px */
+    right: 20px; /* 距离右边20px */
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+
+  .refresh-button:hover {
+    background-color: #45a049;
+  }
+
+  .icon::before {
+    content: '\21bb'; /* Unicode character for a refresh arrow */
+    font-size: 1.2em;
+    margin-right: 0px;
+  }
+</style>
+</head>
+<body>
+
+<div class="refresh-container">
+  <button id="refreshBtn" class="refresh-button">
+    <span class="icon"></span>
+  </button>
+</div>
+
+<script>
+  document.getElementById('refreshBtn').addEventListener('click', function() {
+    console.log('Button clicked! Simulating page refresh...');
+    // 实际刷新页面的逻辑（如果需要的话，取消下面这行代码的注释）
+    // window.location.reload();
+  });
+</script>
+
+</body>
+</html>
