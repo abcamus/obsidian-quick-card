@@ -34,25 +34,6 @@ export class CardifyPluginView extends ItemView {
             return;
         }
 
-        // let refreshContainer = container.createDiv({
-        //     cls: "refresh-container"
-        // });
-
-        // let refreshIcon = container.createSpan({
-        //     cls: "icon",
-        // });
-
-        // let refreshButton = container.createEl("button", {
-        //     cls: "refresh-button"
-        // });
-
-        // refreshButton.appendChild(refreshIcon);
-        // refreshContainer.appendChild(refreshButton);
-
-        // refreshButton.addEventListener("click", (evt) => {
-        //     console.log("refresh button clicked");
-        // });
-
         let cardDivEl = container.createDiv({ cls: "card-container" });
         cards.forEach((card) => {
             cardDivEl.appendChild(new CardView(card).cardify(cardDivEl, this.app));
@@ -69,14 +50,12 @@ export class CardifyPluginView extends ItemView {
     private onCardsChange(cards: Card[], workspace: Workspace) {
         workspace.getLeavesOfType(VIEW_TYPE_CARDIFY).forEach((leaf) => {
             if (leaf.view instanceof CardifyPluginView) {
-                console.log(`view: ${leaf.view}`)
                 leaf.view.buildCardsView(cards, leaf.view.containerEl);
             }
         });
     }
 
     protected async onOpen(): Promise<void> {
-        console.log("open cardify")
         const container = this.containerEl.children[VIEW_CONTENT_INDEX];
         container.empty();
 
@@ -85,7 +64,6 @@ export class CardifyPluginView extends ItemView {
 
     protected async onClose(): Promise<void> {
         // clean up
-        console.log("close cardify")
         CardModel.resetCards()
         CardModel.removeListener(this.onCardsChange);
     }

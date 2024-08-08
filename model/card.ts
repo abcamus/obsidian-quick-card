@@ -20,13 +20,6 @@ export class Card {
         return this.createdAt.toLocaleString();
     }
 
-    // 成员方法，例如：显示卡片信息
-    displayCard(): void {
-        console.log(`Title: ${this.title}`);
-        console.log(`Created At: ${this.getCreatedAtString()}`);
-        console.log(`Summary: ${this.snippet}`);
-    }
-
     toString(): string {
         return `title: ${this.title}, createdAt: ${this.getCreatedAtString()}, \
             snippet: ${this.snippet}, path: ${this.filePath}`;

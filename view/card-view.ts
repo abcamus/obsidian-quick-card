@@ -41,7 +41,6 @@ export class CardView {
         aElement.addEventListener('click', async (event) => {
             event.preventDefault();
             sessionStorage.setItem("scrollPosition", parent.scrollTop.toString());
-            console.log("set scroll position to: ", parent.scrollTop.toString());
             this.card.open(app);
         });
 

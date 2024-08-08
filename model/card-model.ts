@@ -26,7 +26,6 @@ export class CardModel {
 
     addOneCard(title: string, date: Date, snippet: string, filePath: string) {
         this.cards.push(new Card(title, date, snippet, filePath));
-        console.log("new card:", this.cards.last());
     }
 
     async createFile(vault: Vault) {
@@ -49,7 +48,6 @@ export class CardModel {
         return new Promise<void>(async (resolve) => {
             const promises = folder.children.map(async (file) => {
                 if (isMarkdownFile(file.path, vault)) {
-                    console.log(`found file: ${file.path}`);
                     const ctime = vault.getFileByPath(file.path)?.stat.ctime;
                     const snippet = await this.generateSummary(vault.getFileByPath(file.path)!, vault);
                     this.addOneCard(file.name, new Date(ctime!), snippet, file.path);
