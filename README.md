@@ -8,13 +8,15 @@ Files in the current directory are presented as convenient cards, each containin
 Click on any card to open the associated note.
 
 ## Creating New Notes
-A new note can be created by clicking the plus button located at the bottom.
+A new note can be created by clicking the **Plus Button** located at the bottom of card view.
 
 ## Automatic Directory Switching
 As you open various files in the editing area, the plugin will automatically switch to the relevant directory to display the corresponding cards.
 
-# Accessing the Card View
-To activate the card view, locate and use the command "Quick Cards: Show Card View" from the command panel.
+# How to use
+To activate the card view, locate and use the command `Quick Cards: Show Card View` from the command panel.
 
-# Styling Customization
-Personalize the appearance of your cards by editing the style.css file according to your preferences.
+or *right click* a folder, then select *cardify*
+
+# Customize the style
+Personalize the appearance of your cards by editing the `style.css` file according to your preferences.
