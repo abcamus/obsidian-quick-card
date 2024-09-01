@@ -1,4 +1,4 @@
-import { App, IconName, ItemView, WorkspaceLeaf, Workspace, TFile } from "obsidian";
+import { App, IconName, ItemView, WorkspaceLeaf, Workspace } from "obsidian";
 import { CardModel } from "../model/card-model";
 import { Card } from "../model/card";
 import { CardView } from "./card-view";
@@ -47,7 +47,7 @@ export class CardifyPluginView extends ItemView {
         }
     }
 
-    private onCardsChange(cards: Card[], workspace: Workspace) {
+    static onCardsChange(cards: Card[], workspace: Workspace) {
         workspace.getLeavesOfType(VIEW_TYPE_CARDIFY).forEach((leaf) => {
             if (leaf.view instanceof CardifyPluginView) {
                 leaf.view.buildCardsView(cards, leaf.view.containerEl);
@@ -58,13 +58,10 @@ export class CardifyPluginView extends ItemView {
     protected async onOpen(): Promise<void> {
         const container = this.containerEl.children[VIEW_CONTENT_INDEX];
         container.empty();
-
-        CardModel.addListener(this.onCardsChange);
     }
 
     protected async onClose(): Promise<void> {
         // clean up
         CardModel.resetCards()
-        CardModel.removeListener(this.onCardsChange);
     }
 }

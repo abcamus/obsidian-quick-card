@@ -1,15 +1,9 @@
-import { App, Notice, Plugin, PluginSettingTab, Setting, Workspace, WorkspaceLeaf } from 'obsidian';
+import { Notice, Plugin, Workspace, WorkspaceLeaf } from 'obsidian';
 import { CardifyPluginView, VIEW_TYPE_CARDIFY } from "./view/content-view";
 import { CardModel } from "./model/card-model";
-import { QuickCardSetting } from './view/setting';
 
 export default class QuickCardPlugin extends Plugin {
 	async onload() {
-		await QuickCardSetting.loadSettings(this);
-
-		// This adds a settings tab so the user can configure various aspects of the plugin
-		this.addSettingTab(new QuickCardSettingTab(this.app, this));
-
 		// add file menu item
 		this.registerEvent(
 			this.app.workspace.on("file-menu", async (menu, file) => {
@@ -47,6 +41,7 @@ export default class QuickCardPlugin extends Plugin {
 		);
 
 		CardModel.setWorkspace(this.app.workspace);
+		CardModel.addListener(CardifyPluginView.onCardsChange);
 	}
 
 	async activateView(workspace: Workspace) {
@@ -60,38 +55,12 @@ export default class QuickCardPlugin extends Plugin {
 			await leaf?.setViewState({ type: VIEW_TYPE_CARDIFY, active: true })
 		}
 
-		let cardifyView = leaf?.view as CardifyPluginView;
-
 		if (leaf) {
 			workspace.revealLeaf(leaf);
 		}
 	}
 
 	onunload() {
-
-	}
-}
-
-class QuickCardSettingTab extends PluginSettingTab {
-	plugin: QuickCardPlugin;
-
-	constructor(app: App, plugin: QuickCardPlugin) {
-		super(app, plugin);
-		this.plugin = plugin;
-	}
-
-	display(): void {
-		const { containerEl } = this;
-
-		containerEl.empty();
-
-		new Setting(containerEl)
-			.setName('Setting #1')
-			.setDesc('It\'s a secret')
-			.addText(text => text
-				.setPlaceholder('Enter your secret')
-				.onChange(async (value) => {
-					await QuickCardSetting.saveSettings(this.plugin);
-				}));
+		CardModel.removeListener(CardifyPluginView.onCardsChange);
 	}
 }
